@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Developer Portfolio</title>
+  <style>
+    /* Base Styles */
+    :root {
+      --primary: #3498db;
+      --secondary: #2c3e50;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --accent: #e74c3c;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: var(--light);
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--secondary);
+      color: white;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .logo span {
+      color: var(--primary);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      background-color: var(--secondary);
+      color: white;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #2980b9;
+    }
+    
+    /* About Section */
+    .about {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+    
+    .section-title p {
+      color: #777;
+    }
+    
+    .about-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+      padding-right: 40px;
+    }
+    
+    .skills {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .skill-item {
+      margin-bottom: 20px;
+    }
+    
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .skill-bar {
+      height: 10px;
+      background-color: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .skill-level {
+      height: 100%;
+      background-color: var(--primary);
+    }
+    
+    /* Projects Section */
+    .projects {
+      padding: 100px 0;
+      background-color: #f9f9f9;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+    }
+    
+    .project-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .project-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .project-info {
+      padding: 20px;
+    }
+    
+    .project-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .project-title h3 {
+      font-size: 1.5rem;
+      color: var(--secondary);
+    }
+    
+    .project-tag {
+      background-color: var(--primary);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+    }
+    
+    .project-desc {
+      margin-bottom: 20px;
+      color: #666;
+    }
+    
+    .project-links a {
+      margin-right: 15px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    /* Contact Section */
+    .contact {
+      padding: 100px 0;
+    }
+    
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--secondary);
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+    
+    .form-group textarea {
+      height: 150px;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--secondary);
+      color: white;
+      padding: 50px 0 20px;
+      text-align: center;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-column h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column a {
+      color: #ddd;
+      text-decoration: none;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .social-link {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: #444;
+      color: white;
+      border-radius: 50%;
+      margin: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .social-link:hover {
+      background-color: var(--primary);
+    }
+    
+    .copyright {
+      margin-top: 20px;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .about-text, .skills {
+        padding-right: 0;
+        margin-bottom: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Jasraj<span>Portfolio</span></div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Hi, I'm <span style="color: var(--primary);">Jasraj Dhaliwal</span></h1>
+        <p>Developer specializing in Java, JavaScript, HTML/CSS, and MySQL</p>
+        <a href="#projects" class="btn">View My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>Learn more about my skills and experience</p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>I am a passionate developer with knowledge in Java, JavaScript, HTML, CSS, and MySQL. I enjoy creating efficient, user-friendly applications that people can find enjoyable.</p>
+          <p>My journey in programming began with Java, which gave me a solid understanding of object-oriented programming principles. Over time, I've expanded my skillset to include web technologies, allowing me to build solutions on the web.</p>
+          <p>When I'm not coding, you can find me exploring new technologies.</p>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>My Projects</h2>
+        <p>Check out some of my recent work</p>
+      </div>
+      <div class="projects-grid">
+        <!-- Java Project -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://theplaidhorse.s3.amazonaws.com/media/uploads/2024/01/poker-blackjack-cards-casino.png" alt="Java Project">
+          </div>
+          <div class="project-info">
+            <div class="project-title">
+              <h3>Blackjack Like Game</h3>
+              <span class="project-tag">Java</span>
+            </div>
+            <p class="project-desc">A blackjack like game where you go against the computer and you have the option to hit or stand.</p>
+            <div class="project-links">
+              <a href="https://github.com/JasrajDhaliwal/black-jack">Source Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- HTML/CSS Project -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://cdn.wcs.org/2024/03/13/21/14/05/2d2c6f1b-71c4-4390-b7e2-deb21a0bc11f/shutterstock_2331893385.jpg" alt="HTML/CSS Project">
+          </div>
+          <div class="project-info">
+            <div class="project-title">
+              <h3>Landing Page</h3>
+              <span class="project-tag">HTML/CSS</span>
+            </div>
+            <p class="project-desc">Here I made a site about saving endangered frogs and getting the support of people.</p>
+            <div class="project-links">
+              <a href="https://jasrajdhaliwal.github.io/start-up-of-the-year/">Live Site</a>
+              <a href="https://github.com/JasrajDhaliwal/start-up-of-the-year">Source Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- MySQL Project -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://image-tc.galaxy.tf/wijpeg-6tt5eph6h7hrzkjcz7vy4cd7k/coast-chilliwack-hotel-by-apa-premium-room-king-with-sofabed-1.jpg">
+          </div>
+          <div class="project-info">
+            <div class="project-title">
+              <h3>Hotel Database</h3>
+              <span class="project-tag">MySQL</span>
+            </div>
+            <p class="project-desc">A datbase for a hotel to manage all the customers, employees, and rooms associated with a hotel.</p>
+            <div class="project-links">
+              <a href="https://github.com/JasrajDhaliwal/hotel-database">SQL Scripts and Schema</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Footer -->
+  <footer id = "contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Jasraj<span style="color: var(--primary);">Portfolio</span></h3>
+          <p>Bringing your ideas to life through code.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li>Email: jasrajdhaliwal33@gmail.com</li>
+            <li>Phone: +1 (236) 458-2718</li>
+            <li>Location: Metro Vancouver, Canada</li>
+          </ul>
+        </div>
+      </div>
+      <div class="social-links">
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 JasrajDhaliwal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Basic JavaScript for smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
